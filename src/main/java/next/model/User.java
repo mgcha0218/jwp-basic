@@ -29,7 +29,29 @@ public class User {
         return email;
     }
 
+    public void upadata(User updataUser) {
+    	this.password = updataUser.getPassword();
+    	this.name = updataUser.getName();
+    	this.email = updataUser.getEmail();
+    }
+    
+    public boolean isSameUser(User user) {
+    	return userId.equals(user.getUserId());
+    }
+   
+    public boolean matchPassword(String password) {
+    	if(password ==  null) {
+    		return false;
+    	} 
+    	return this.password.equals(password);
+    }
+    
     @Override
+	public String toString() {
+		return "User[userId ="+userId+", name=" +name+", email =" +email+"]";
+	}
+
+	@Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
