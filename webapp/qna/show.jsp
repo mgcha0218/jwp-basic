@@ -62,7 +62,7 @@
                                       <img src="https://graph.facebook.com/v2.3/1324855987/picture" class="article-author-thumb" alt="">
                                   </div>
                                   <div class="article-header-text">
-                                      ${each.whiter}
+                                      ${each.writer}
                                       <div class="article-header-titme">
                                         <fmt:formatDate pattern="yyyy-MM-dd  HH:mm:ss" value="${each.createDate}"/>
                                       </div>
