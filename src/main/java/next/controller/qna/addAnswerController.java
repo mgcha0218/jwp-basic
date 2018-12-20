@@ -27,6 +27,8 @@ public class addAnswerController implements Controller {
 		log.debug("saved answer : {}", savedAnswer);
 		
 		
+		
+		
 		ObjectMapper mapper = new ObjectMapper();
 		resp.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = resp.getWriter();
