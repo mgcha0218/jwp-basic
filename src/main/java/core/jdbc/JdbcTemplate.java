@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.jdbc.core.PreparedStatementCreator;
+
 public class JdbcTemplate {
 
 	 public void update(String sql, PreparedStatementSetter pss) throws  DataAccessException {
@@ -78,4 +80,19 @@ public class JdbcTemplate {
 				}
 			};
 		}
+		
+		 public void update( PreparedStatementCreator psc, KeyHolder holder ) throws  DataAccessException {
+	         try(Connection conn = ConnectionManager.getConnection()){
+	        		 PreparedStatement  ps = psc.createPreparedStatement(conn);
+	             ps.executeUpdate();
+	        		 
+	        		 ResultSet rs = ps.getGeneratedKeys();
+	        		 if(rs.next()) {
+	        			 holder.setId(rs.getLong(1));
+	        		 }
+	        		 rs.close();
+	         }catch(SQLException e) {
+	        	 	throw new DataAccessException(e);
+	         }        
+	 }
 }

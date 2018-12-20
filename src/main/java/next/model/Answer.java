@@ -9,6 +9,7 @@ public class Answer {
 	private String 	contents;
 	private Date 	createDate;
 	private long	questionId;
+	private int countOfAnswer;
 
 	
 	public Answer(String writer, String contents, long questionId) {
@@ -44,8 +45,16 @@ public class Answer {
 		return this.createDate.getTime();
 	}
 	
-	public long getQuestId() {
+	public long getQuestionId() {
 		return questionId;
+	}
+	
+	public int  getCountOfAnswer() {
+		return countOfAnswer;
+	}
+	
+	public void setCountOfAnswer(int count) {
+		this.countOfAnswer = count;
 	}
 	
 	@Override

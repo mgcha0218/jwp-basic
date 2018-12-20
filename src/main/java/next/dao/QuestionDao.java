@@ -9,6 +9,28 @@ import next.model.Question;
 
 
 public class QuestionDao {
+	public void insert(Question question) {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		
+		String sql = "INSERT INTO QUESTIONS  (writer, title, contents, createDate, countOfAnswer) VALUES(?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, question.getWriter(), question.getTitle(), question.getContents(), question.getCreateDate(),question.getCountOfAnswer());
+	}
+	
+	public void delete (Long questionId) {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		
+		String sql = "DELETE FROM QUESTIONS WHERE questionId=?";
+		jdbcTemplate.update(sql, questionId);
+	}
+	
+/*	
+ * public void update () {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		
+		String sql ="UPDATE SET QUESTIONS WHERE  ";
+		jdbcTemplate.update(sql, );
+	}
+	*/
 	public List<Question> findAll() throws SQLException {
     	JdbcTemplate jdbcTemplate = new JdbcTemplate();
     	
